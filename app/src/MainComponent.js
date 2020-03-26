@@ -18,6 +18,10 @@ class MainComponent extends Component {
         this.totalSupply = this.props.DeedToken.totalSupply[this.dataKey].value;
     }
 
+    handleSayHello = () => {
+        this.props.onClickSayHello();
+    }
+
     render() {
         return (
             <div className="container">
@@ -31,6 +35,10 @@ class MainComponent extends Component {
                 <h2>Total Supply</h2>
                 <p>{this.totalSupply}</p>
                 <button onClick={this.handleClick}>Total Supply</button>
+                <h2>Say Hello</h2>
+                <p>{this.props.hello}</p>
+                <input type="text" ref={(ref)=>this.input=ref}/>
+                <button onClick={this.handleSayHello}>Say Hello!</button>
             </div>
         )
     }

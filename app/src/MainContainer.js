@@ -1,5 +1,6 @@
 import {drizzleConnect } from "@drizzle/react-plugin";
 import MainComponent from "./MainComponent";
+import { sayHelloAction } from "./actions/customAction";
 
 const mapStateToProps = (state) => {
     return {
@@ -10,6 +11,12 @@ const mapStateToProps = (state) => {
     };
 };
 
-const MainContainer = drizzleConnect(MainComponent, mapStateToProps);
+const mapDispatchToProps = (dispatch) => (
+    {
+        onClickSayHello: (params) => {dispatch(sayHelloAction(params))}
+    }
+)
+
+const MainContainer = drizzleConnect(MainComponent, mapStateToProps, mapDispatchToProps);
 
 export default MainContainer;
